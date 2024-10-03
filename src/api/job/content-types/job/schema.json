@@ -40,6 +40,17 @@
       "relation": "manyToOne",
       "target": "api::company.company",
       "inversedBy": "jobs"
+    },
+    "employmentType": {
+      "type": "enumeration",
+      "enum": [
+        "Full-Time",
+        "Part-Time",
+        "Contract"
+      ]
+    },
+    "stillHere": {
+      "type": "boolean"
     }
   }
 }
