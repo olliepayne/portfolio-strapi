@@ -566,7 +566,7 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
     employmentType: Schema.Attribute.Enumeration<
       ['Full-Time', 'Part-Time', 'Contract']
     >;
-    stillHere: Schema.Attribute.Boolean;
+    stillHere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -596,6 +596,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     mainImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
     summary: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

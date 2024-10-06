@@ -37,6 +37,9 @@
     },
     "summary": {
       "type": "text"
+    },
+    "slug": {
+      "type": "uid"
     }
   }
 }

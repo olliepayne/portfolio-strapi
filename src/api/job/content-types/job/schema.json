@@ -50,7 +50,8 @@
       ]
     },
     "stillHere": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }
