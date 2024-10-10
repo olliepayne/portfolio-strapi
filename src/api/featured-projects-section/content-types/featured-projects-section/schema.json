@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "featured_projects_sections",
+  "info": {
+    "singularName": "featured-projects-section",
+    "pluralName": "featured-projects-sections",
+    "displayName": "Featured Projects Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "main": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "second": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "third": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    }
+  }
+}

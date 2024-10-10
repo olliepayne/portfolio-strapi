@@ -515,6 +515,36 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeaturedProjectsSectionFeaturedProjectsSection
+  extends Struct.SingleTypeSchema {
+  collectionName: 'featured_projects_sections';
+  info: {
+    singularName: 'featured-projects-section';
+    pluralName: 'featured-projects-sections';
+    displayName: 'Featured Projects Section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    main: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
+    second: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
+    third: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::featured-projects-section.featured-projects-section'
+    >;
+  };
+}
+
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -1021,6 +1051,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::company.company': ApiCompanyCompany;
+      'api::featured-projects-section.featured-projects-section': ApiFeaturedProjectsSectionFeaturedProjectsSection;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::job.job': ApiJobJob;
       'api::project.project': ApiProjectProject;
