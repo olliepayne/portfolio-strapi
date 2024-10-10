@@ -15,9 +15,6 @@
     "name": {
       "type": "string"
     },
-    "content": {
-      "type": "richtext"
-    },
     "mainImage": {
       "type": "media",
       "multiple": false,
@@ -40,6 +37,36 @@
     },
     "slug": {
       "type": "uid"
+    },
+    "requestContent": {
+      "type": "richtext"
+    },
+    "strategyContent": {
+      "type": "richtext"
+    },
+    "resultsContent": {
+      "type": "richtext"
+    },
+    "resultsImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "secondaryImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
