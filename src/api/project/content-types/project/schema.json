@@ -33,7 +33,8 @@
       "inversedBy": "projects"
     },
     "summary": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 200
     },
     "slug": {
       "type": "uid"

@@ -651,7 +651,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     mainImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
-    summary: Schema.Attribute.Text;
+    summary: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
     slug: Schema.Attribute.UID;
     requestContent: Schema.Attribute.RichText;
     strategyContent: Schema.Attribute.RichText;
