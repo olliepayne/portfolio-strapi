@@ -515,6 +515,33 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
+  collectionName: 'contact_pages';
+  info: {
+    singularName: 'contact-page';
+    pluralName: 'contact-pages';
+    displayName: 'Contact Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    seo: Schema.Attribute.Component<'basic.seo', false>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    >;
+  };
+}
+
 export interface ApiFeaturedProjectsSectionFeaturedProjectsSection
   extends Struct.SingleTypeSchema {
   collectionName: 'featured_projects_sections';
@@ -635,6 +662,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     secondaryImage: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    seo: Schema.Attribute.Component<'basic.seo', false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1051,6 +1079,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::company.company': ApiCompanyCompany;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::featured-projects-section.featured-projects-section': ApiFeaturedProjectsSectionFeaturedProjectsSection;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::job.job': ApiJobJob;
