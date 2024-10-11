@@ -24,9 +24,6 @@
     "location": {
       "type": "string"
     },
-    "summary": {
-      "type": "text"
-    },
     "endDate": {
       "type": "date"
     },
@@ -52,6 +49,9 @@
     "stillHere": {
       "type": "boolean",
       "default": false
+    },
+    "summary": {
+      "type": "richtext"
     }
   }
 }

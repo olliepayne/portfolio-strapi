@@ -616,7 +616,6 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
     startDate: Schema.Attribute.Date;
     remote: Schema.Attribute.Boolean;
     location: Schema.Attribute.String;
-    summary: Schema.Attribute.Text;
     endDate: Schema.Attribute.Date;
     skills: Schema.Attribute.Relation<'oneToMany', 'api::skill.skill'>;
     company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
@@ -624,6 +623,7 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
       ['Full-Time', 'Part-Time', 'Contract']
     >;
     stillHere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    summary: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
