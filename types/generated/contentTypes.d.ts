@@ -681,6 +681,30 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiResumeResume extends Struct.SingleTypeSchema {
+  collectionName: 'resumes';
+  info: {
+    singularName: 'resume';
+    pluralName: 'resumes';
+    displayName: 'Resume';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    file: Schema.Attribute.Media<'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::resume.resume'>;
+  };
+}
+
 export interface ApiSkillSkill extends Struct.CollectionTypeSchema {
   collectionName: 'skills';
   info: {
@@ -1087,6 +1111,7 @@ declare module '@strapi/strapi' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::job.job': ApiJobJob;
       'api::project.project': ApiProjectProject;
+      'api::resume.resume': ApiResumeResume;
       'api::skill.skill': ApiSkillSkill;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
