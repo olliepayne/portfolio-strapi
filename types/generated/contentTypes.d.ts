@@ -612,17 +612,22 @@ export interface ApiJobJob extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    title: Schema.Attribute.String;
-    startDate: Schema.Attribute.Date;
-    remote: Schema.Attribute.Boolean;
-    location: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    startDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    remote: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
     endDate: Schema.Attribute.Date;
     skills: Schema.Attribute.Relation<'oneToMany', 'api::skill.skill'>;
     company: Schema.Attribute.Relation<'manyToOne', 'api::company.company'>;
     employmentType: Schema.Attribute.Enumeration<
       ['Full-Time', 'Part-Time', 'Contract']
-    >;
-    stillHere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    > &
+      Schema.Attribute.Required;
+    stillHere: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     summary: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

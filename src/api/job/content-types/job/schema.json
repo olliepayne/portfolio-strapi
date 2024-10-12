@@ -13,16 +13,21 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "startDate": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "remote": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true,
+      "default": false
     },
     "location": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "endDate": {
       "type": "date"
@@ -44,11 +49,13 @@
         "Full-Time",
         "Part-Time",
         "Contract"
-      ]
+      ],
+      "required": true
     },
     "stillHere": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "required": true
     },
     "summary": {
       "type": "richtext"
