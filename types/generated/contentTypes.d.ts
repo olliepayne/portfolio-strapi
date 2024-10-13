@@ -658,18 +658,12 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
     summary: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 200;
+        maxLength: 250;
       }>;
     slug: Schema.Attribute.UID;
     requestContent: Schema.Attribute.RichText;
     strategyContent: Schema.Attribute.RichText;
     resultsContent: Schema.Attribute.RichText;
-    resultsImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    secondaryImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     seo: Schema.Attribute.Component<'basic.seo', false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

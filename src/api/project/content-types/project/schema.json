@@ -34,7 +34,7 @@
     },
     "summary": {
       "type": "text",
-      "maxLength": 200
+      "maxLength": 250
     },
     "slug": {
       "type": "uid"
@@ -47,28 +47,6 @@
     },
     "resultsContent": {
       "type": "richtext"
-    },
-    "resultsImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "secondaryImage": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     },
     "seo": {
       "type": "component",
