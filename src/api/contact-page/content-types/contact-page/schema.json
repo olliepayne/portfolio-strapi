@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-page",
     "pluralName": "contact-pages",
-    "displayName": "Contact Page"
+    "displayName": "Contact Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +15,8 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "basic.seo"
+      "component": "basic.seo",
+      "required": true
     }
   }
 }

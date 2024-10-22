@@ -32,22 +32,23 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "required": false,
+      "required": true,
       "component": "basic.seo"
     },
     "summary": {
       "type": "text",
       "maxLength": 200,
-      "required": false
+      "required": true
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "skills": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::skill.skill",
-      "inversedBy": "blog_posts"
+      "mappedBy": "blog_posts"
     }
   }
 }

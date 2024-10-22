@@ -16,7 +16,8 @@
       "displayName": "SEO",
       "type": "component",
       "repeatable": false,
-      "component": "basic.seo"
+      "component": "basic.seo",
+      "required": true
     }
   }
 }

@@ -501,12 +501,14 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     mainImage: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    seo: Schema.Attribute.Component<'basic.seo', false>;
+    seo: Schema.Attribute.Component<'basic.seo', false> &
+      Schema.Attribute.Required;
     summary: Schema.Attribute.Text &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 200;
       }>;
-    content: Schema.Attribute.RichText;
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
     skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -535,8 +537,9 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    name: Schema.Attribute.String;
-    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    logo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     jobs: Schema.Attribute.Relation<'oneToMany', 'api::job.job'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -559,12 +562,14 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
     singularName: 'contact-page';
     pluralName: 'contact-pages';
     displayName: 'Contact Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    seo: Schema.Attribute.Component<'basic.seo', false>;
+    seo: Schema.Attribute.Component<'basic.seo', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -622,7 +627,8 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    seo: Schema.Attribute.Component<'basic.seo', false>;
+    seo: Schema.Attribute.Component<'basic.seo', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -691,18 +697,20 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    name: Schema.Attribute.String;
-    mainImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    mainImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
     summary: Schema.Attribute.Text &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
-    slug: Schema.Attribute.UID;
-    requestContent: Schema.Attribute.RichText;
-    strategyContent: Schema.Attribute.RichText;
-    resultsContent: Schema.Attribute.RichText;
-    seo: Schema.Attribute.Component<'basic.seo', false>;
+    slug: Schema.Attribute.UID & Schema.Attribute.Required;
+    requestContent: Schema.Attribute.RichText & Schema.Attribute.Required;
+    strategyContent: Schema.Attribute.RichText & Schema.Attribute.Required;
+    resultsContent: Schema.Attribute.RichText & Schema.Attribute.Required;
+    seo: Schema.Attribute.Component<'basic.seo', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -754,7 +762,7 @@ export interface ApiSkillSkill extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     blog_posts: Schema.Attribute.Relation<
       'manyToMany',
