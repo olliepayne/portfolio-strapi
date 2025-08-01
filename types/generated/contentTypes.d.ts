@@ -708,8 +708,10 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     requestContent: Schema.Attribute.RichText & Schema.Attribute.Required;
     strategyContent: Schema.Attribute.RichText & Schema.Attribute.Required;
-    resultsContent: Schema.Attribute.RichText & Schema.Attribute.Required;
+    takeawaysContent: Schema.Attribute.RichText & Schema.Attribute.Required;
     seo: Schema.Attribute.Component<'basic.seo', false> &
+      Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['Personal', 'Professional']> &
       Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

@@ -47,7 +47,7 @@
       "type": "richtext",
       "required": true
     },
-    "resultsContent": {
+    "takeawaysContent": {
       "type": "richtext",
       "required": true
     },
@@ -55,6 +55,14 @@
       "type": "component",
       "repeatable": false,
       "component": "basic.seo",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Personal",
+        "Professional"
+      ],
       "required": true
     }
   }
