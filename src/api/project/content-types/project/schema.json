@@ -39,7 +39,7 @@
       "type": "uid",
       "required": true
     },
-    "requestContent": {
+    "goalsContent": {
       "type": "richtext",
       "required": true
     },
