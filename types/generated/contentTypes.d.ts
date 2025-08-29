@@ -707,7 +707,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       }>;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     goalsContent: Schema.Attribute.RichText & Schema.Attribute.Required;
-    strategyContent: Schema.Attribute.RichText & Schema.Attribute.Required;
+    planContent: Schema.Attribute.RichText & Schema.Attribute.Required;
     takeawaysContent: Schema.Attribute.RichText & Schema.Attribute.Required;
     seo: Schema.Attribute.Component<'basic.seo', false> &
       Schema.Attribute.Required;

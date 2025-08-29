@@ -43,7 +43,7 @@
       "type": "richtext",
       "required": true
     },
-    "strategyContent": {
+    "planContent": {
       "type": "richtext",
       "required": true
     },
