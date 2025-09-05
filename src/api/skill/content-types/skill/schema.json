@@ -4,7 +4,7 @@
   "info": {
     "singularName": "skill",
     "pluralName": "skills",
-    "displayName": "Skill",
+    "displayName": "Tag",
     "description": ""
   },
   "options": {
@@ -16,17 +16,17 @@
       "type": "string",
       "required": true
     },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "mappedBy": "skills"
-    },
     "blog_posts": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog-post.blog-post",
       "inversedBy": "skills"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "tags"
     }
   }
 }

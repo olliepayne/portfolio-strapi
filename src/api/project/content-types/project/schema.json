@@ -24,7 +24,7 @@
         "images"
       ]
     },
-    "skills": {
+    "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::skill.skill",
@@ -39,30 +39,22 @@
       "type": "uid",
       "required": true
     },
-    "goalsContent": {
-      "type": "richtext",
-      "required": true
-    },
-    "planContent": {
-      "type": "richtext",
-      "required": true
-    },
-    "takeawaysContent": {
-      "type": "richtext",
-      "required": true
-    },
     "seo": {
       "type": "component",
       "repeatable": false,
       "component": "basic.seo",
       "required": true
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Personal",
-        "Professional"
-      ],
+    "content": {
+      "type": "richtext"
+    },
+    "company": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::company.company"
+    },
+    "duration": {
+      "type": "string",
       "required": true
     }
   }

@@ -556,65 +556,6 @@ export interface ApiCompanyCompany extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
-  collectionName: 'contact_pages';
-  info: {
-    singularName: 'contact-page';
-    pluralName: 'contact-pages';
-    displayName: 'Contact Page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    seo: Schema.Attribute.Component<'basic.seo', false> &
-      Schema.Attribute.Required;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::contact-page.contact-page'
-    >;
-  };
-}
-
-export interface ApiFeaturedProjectsSectionFeaturedProjectsSection
-  extends Struct.SingleTypeSchema {
-  collectionName: 'featured_projects_sections';
-  info: {
-    singularName: 'featured-projects-section';
-    pluralName: 'featured-projects-sections';
-    displayName: 'Featured Projects Section';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    main: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
-    second: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
-    third: Schema.Attribute.Relation<'oneToOne', 'api::project.project'>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::featured-projects-section.featured-projects-section'
-    >;
-  };
-}
-
 export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   collectionName: 'homepages';
   info: {
@@ -699,20 +640,18 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   attributes: {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     mainImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    skills: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
+    tags: Schema.Attribute.Relation<'manyToMany', 'api::skill.skill'>;
     summary: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
-    goalsContent: Schema.Attribute.RichText & Schema.Attribute.Required;
-    planContent: Schema.Attribute.RichText & Schema.Attribute.Required;
-    takeawaysContent: Schema.Attribute.RichText & Schema.Attribute.Required;
     seo: Schema.Attribute.Component<'basic.seo', false> &
       Schema.Attribute.Required;
-    type: Schema.Attribute.Enumeration<['Personal', 'Professional']> &
-      Schema.Attribute.Required;
+    content: Schema.Attribute.RichText;
+    company: Schema.Attribute.Relation<'oneToOne', 'api::company.company'>;
+    duration: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -757,7 +696,7 @@ export interface ApiSkillSkill extends Struct.CollectionTypeSchema {
   info: {
     singularName: 'skill';
     pluralName: 'skills';
-    displayName: 'Skill';
+    displayName: 'Tag';
     description: '';
   };
   options: {
@@ -765,11 +704,11 @@ export interface ApiSkillSkill extends Struct.CollectionTypeSchema {
   };
   attributes: {
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     blog_posts: Schema.Attribute.Relation<
       'manyToMany',
       'api::blog-post.blog-post'
     >;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1159,8 +1098,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::company.company': ApiCompanyCompany;
-      'api::contact-page.contact-page': ApiContactPageContactPage;
-      'api::featured-projects-section.featured-projects-section': ApiFeaturedProjectsSectionFeaturedProjectsSection;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::job.job': ApiJobJob;
       'api::project.project': ApiProjectProject;
